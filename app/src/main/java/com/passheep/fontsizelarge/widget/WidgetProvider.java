@@ -42,13 +42,9 @@ public class WidgetProvider extends AppWidgetProvider {
     public void onReceive(final Context context, Intent intent) {
         super.onReceive(context, intent);
         final String action = intent.getAction();
-        Log.v("serviceTTTTTT", action);
-
-        Log.v("idsSet", idsSet.toString());
         SharedPreferences sharedPreferences = context.getSharedPreferences("widgetData", Context.MODE_PRIVATE);
         idsSet = sharedPreferences.getStringSet("battery", new HashSet());
         if (ACTION_UPDATE_ALL.equals(action) && null != idsSet) {
-            Log.v("serviceTTTTTT", "----------------------");
             // “更新”广播
             updateAllAppWidgets(context, AppWidgetManager.getInstance(context), idsSet);
         }
@@ -75,7 +71,7 @@ public class WidgetProvider extends AppWidgetProvider {
             RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.app_widget);
 
             // 设置显示数字
-            remoteView.setTextViewText(R.id.widget_txt, mm.get("level") + "  --  " + mm.get("charging"));
+            remoteView.setTextViewText(R.id.widget_txt, mm.get("level") + "%");
 
             // 设置点击按钮对应的PendingIntent：即点击按钮时，发送广播。
 //            remoteView.setOnClickPendingIntent(R.id.widget_btn_reset, getResetPendingIntent(context));
