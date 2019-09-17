@@ -72,6 +72,8 @@ public class WidgetProvider extends AppWidgetProvider {
 
             // 设置显示数字
             remoteView.setTextViewText(R.id.widget_txt, mm.get("level") + "%");
+            remoteView.setTextViewText(R.id.widget_txt_charging,
+                    mm.get("charging").equals("2")? "充电中" : "未充电");
 
             // 设置点击按钮对应的PendingIntent：即点击按钮时，发送广播。
 //            remoteView.setOnClickPendingIntent(R.id.widget_btn_reset, getResetPendingIntent(context));
@@ -87,6 +89,10 @@ public class WidgetProvider extends AppWidgetProvider {
      *
      */
     private PendingIntent restartService(Context context) {
+        // 发送广播
+        Intent updateIntent = new Intent(ACTION_UPDATE_ALL);
+        context.sendBroadcast(updateIntent);
+        // 启动服务
         Intent service = new Intent(context, WidgetService.class);
         context.startService(service);
         PendingIntent pi = PendingIntent.getService(context, 0, service, 0);

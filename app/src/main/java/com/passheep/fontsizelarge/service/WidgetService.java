@@ -18,7 +18,7 @@ public class WidgetService extends Service {
     // 更新 widget 的广播对应的 action
     private final String ACTION_UPDATE_ALL = "com.passheep.widget.UPDATE_ALL";
     // 周期性更新 widget 的周期
-    private static final int UPDATE_TIME = 30000;
+    private static final int UPDATE_TIME = 10000;
 
     private Timer mTimer;
     private TimerTask mTimerTask;

@@ -4,8 +4,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@drawable/shape_corner"
-              android:gravity="center"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:gravity="center">
 
     <TextView
         android:id="@+id/widget_txt"
@@ -13,6 +13,16 @@
         android:layout_height="wrap_content"
         android:text="100%"
         android:textColor="#ffffff"
-        android:textSize="48sp"/>
+        android:textSize="48sp"
+        android:layout_gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/widget_txt_charging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="充电中"
+        android:textColor="#ffffff"
+        android:textSize="24sp"/>
 
 </LinearLayout>
